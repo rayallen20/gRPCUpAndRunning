@@ -1,0 +1,25 @@
+// 定义使用的proto buffers版本
+syntax = "proto3";
+
+// 定义包名 包名用于防止协议消息类型之间发生命名冲突
+package ecommerce;
+
+// 定义gRPC服务的接口
+service ProductInfo {
+    // 定义rpc方法 用于添加商品 该方法是远程调用的方法
+    rpc addProduct(Product) returns (ProductID);
+    rpc getProduct(ProductID) returns (Product);
+}
+
+// 定义商品信息的消息类型
+message Product {
+    // 定义商品的id 字段的组成为名-值对
+    // 1是编号 表示字段的唯一标识 该编号用于在二进制格式消息中识别字段
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message ProductID {
+    string value = 1;
+}
