@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package ecommerce;
+
+service ProductInfo {
+  // addProduct 添加商品
+  rpc addProduct(Product) returns (ProductID);
+  // getProduct 获取商品
+  rpc getProduct(ProductID) returns (Product);
+}
+
+message ProductID {
+  string value = 1;
+}
+
+message Product {
+  // id 商品唯一标识符
+  string id = 1;
+  // name 商品名称
+  string name = 2;
+  // description 商品描述
+  string description = 3;
+  // price 商品价格
+  float price = 4;
+}
